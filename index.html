@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html class="aui ltr" dir="ltr" lang="en-US">
+
+<head>
+    <title>chat - Digiassist</title>
+    <meta content="initial-scale=1.0, width=device-width" name="viewport" />
+    <link rel="shortcut icon" href="$favicon" type="image/x-icon">
+    <link rel="icon" href="$favicon" type="image/x-icon">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <link href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;chat"
+        rel="canonical" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;ca&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="ca-ES" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;zh&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="zh-CN" rel="alternate" />
+    <link href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="x-default" rel="alternate" />
+    <link href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="en-US" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;fi&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="fi-FI" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;fr&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="fr-FR" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;de&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="de-DE" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;iw&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="iw-IL" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;hu&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="hu-HU" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;ja&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="ja-JP" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;pt&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="pt-BR" rel="alternate" />
+    <link
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;es&#x2f;web&#x2f;seasite2&#x2f;chat"
+        hreflang="es-ES" rel="alternate" />
+    <link class="lfr-css-file"
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;verticle&#x2f;css&#x2f;aui&#x2e;css&#x3f;browserId&#x3d;firefox&#x26;themeId&#x3d;verticle_WAR_verticle&#x26;minifierType&#x3d;css&#x26;languageId&#x3d;en_US&#x26;b&#x3d;6205&#x26;t&#x3d;1567664802000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="&#x2f;html&#x2f;css&#x2f;main&#x2e;css&#x3f;browserId&#x3d;firefox&#x26;themeId&#x3d;verticle_WAR_verticle&#x26;minifierType&#x3d;css&#x26;languageId&#x3d;en_US&#x26;b&#x3d;6205&#x26;t&#x3d;1452638184000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="https://dev-digiassist.experian.com.sg/chatbot-portlet/css/main.css?browserId=firefox&amp;themeId=verticle_WAR_verticle&amp;minifierType=css&amp;languageId=en_US&amp;b=6205&amp;t=1579688749000"
+        rel="stylesheet" type="text/css" />
+    <link
+        href="https://dev-digiassist.experian.com.sg/notifications-portlet/notifications/css/main.css?browserId=firefox&amp;themeId=verticle_WAR_verticle&amp;minifierType=css&amp;languageId=en_US&amp;b=6205&amp;t=1578979737000"
+        rel="stylesheet" type="text/css" />
+    <script
+        type="text/javascript">var Liferay = { Browser: { acceptsGzip: function () { return true }, getMajorVersion: function () { return 73 }, getRevision: function () { return "73.0" }, getVersion: function () { return "73.0" }, isAir: function () { return false }, isChrome: function () { return false }, isFirefox: function () { return true }, isGecko: function () { return true }, isIe: function () { return false }, isIphone: function () { return false }, isLinux: function () { return false }, isMac: function () { return false }, isMobile: function () { return false }, isMozilla: function () { return true }, isOpera: function () { return false }, isRtf: function () { return true }, isSafari: function () { return false }, isSun: function () { return false }, isWap: function () { return false }, isWapXhtml: function () { return false }, isWebKit: function () { return false }, isWindows: function () { return true }, isWml: function () { return false } }, Data: { NAV_SELECTOR: "#navigation", isCustomizationView: function () { return false }, notices: [null] }, ThemeDisplay: { getLayoutId: function () { return "10" }, getLayoutURL: function () { return "https://dev-digiassist.experian.com.sg/web/seasite2/chat" }, getParentLayoutId: function () { return "0" }, isPrivateLayout: function () { return "false" }, isVirtualLayout: function () { return false }, getBCP47LanguageId: function () { return "en-US" }, getCDNBaseURL: function () { return "https://dev-digiassist.experian.com.sg" }, getCDNDynamicResourcesHost: function () { return "" }, getCDNHost: function () { return "" }, getCompanyId: function () { return "20154" }, getCompanyGroupId: function () { return "20194" }, getDefaultLanguageId: function () { return "en_US" }, getDoAsUserIdEncoded: function () { return "" }, getLanguageId: function () { return "en_US" }, getParentGroupId: function () { return "21602" }, getPathContext: function () { return "" }, getPathImage: function () { return "/image" }, getPathJavaScript: function () { return "/html/js" }, getPathMain: function () { return "/c" }, getPathThemeImages: function () { return "https://dev-digiassist.experian.com.sg/verticle/images" }, getPathThemeRoot: function () { return "/verticle" }, getPlid: function () { return "30434" }, getPortalURL: function () { return "https://dev-digiassist.experian.com.sg" }, getPortletSetupShowBordersDefault: function () { return true }, getScopeGroupId: function () { return "21602" }, getScopeGroupIdOrLiveGroupId: function () { return "21602" }, getSessionId: function () { return "" }, getSiteGroupId: function () { return "21602" }, getURLControlPanel: function () { return "/group/control_panel?refererPlid=30434" }, getURLHome: function () { return "https\x3a\x2f\x2fdev-digiassist\x2eexperian\x2ecom\x2esg\x2fweb\x2fguest" }, getUserId: function () { return "20158" }, getUserName: function () { return "" }, isAddSessionIdToURL: function () { return false }, isFreeformLayout: function () { return false }, isImpersonated: function () { return false }, isSignedIn: function () { return false }, isStateExclusive: function () { return false }, isStateMaximized: function () { return false }, isStatePopUp: function () { return false } }, PropsValues: { NTLM_AUTH_ENABLED: false } }; var themeDisplay = Liferay.ThemeDisplay; Liferay.AUI = { getAvailableLangPath: function () { return "available_languages.jsp?browserId=firefox&themeId=verticle_WAR_verticle&colorSchemeId=01&minifierType=js&languageId=en_US&b=6205&t=1452641414000" }, getCombine: function () { return true }, getComboPath: function () { return "/combo/?browserId=firefox&minifierType=&languageId=en_US&b=6205&t=1452641414000&" }, getFilter: function () { return "min" }, getJavaScriptRootPath: function () { return "/html/js" }, getLangPath: function () { return "aui_lang.jsp?browserId=firefox&themeId=verticle_WAR_verticle&colorSchemeId=01&minifierType=js&languageId=en_US&b=6205&t=1452641414000" }, getStaticResourceURLParams: function () { return "?browserId=firefox&minifierType=&languageId=en_US&b=6205&t=1452641414000" } }; Liferay.authToken = "eGYbrG8i"; Liferay.currentURL = "\x2fweb\x2fseasite2\x2fchat"; Liferay.currentURLEncoded = "%2Fweb%2Fseasite2%2Fchat";</script>
+    <script
+        src="/html/js/barebone.jsp?browserId=firefox&amp;themeId=verticle_WAR_verticle&amp;colorSchemeId=01&amp;minifierType=js&amp;minifierBundleId=javascript.barebone.files&amp;languageId=en_US&amp;b=6205&amp;t=1452641414000"
+        type="text/javascript"></script>
+    <script type="text/javascript">Liferay.Portlet.list = ["chatbotportlet_WAR_chatbotportlet"];</script>
+    <link class="lfr-css-file"
+        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;verticle&#x2f;css&#x2f;main&#x2e;css&#x3f;browserId&#x3d;firefox&#x26;themeId&#x3d;verticle_WAR_verticle&#x26;minifierType&#x3d;css&#x26;languageId&#x3d;en_US&#x26;b&#x3d;6205&#x26;t&#x3d;1567664802000"
+        rel="stylesheet" type="text/css" />
+    <style type="text/css"></style>
+    <style>
+        @font-face {
+            font-family: 'robotoregular';
+            src: url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.eot');
+            src: url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.woff2') format('woff2'), url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.woff') format('woff'), url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'), url('https://dev-digiassist.experian.com.sg/verticle/css/fonts/roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .control-label {
+            font-family: "robotoregular";
+        }
+
+        span,
+        a,
+        label,
+        div,
+        button,
+        .aui input,
+        .aui button,
+        .aui select,
+        .aui textarea {
+            font-family: "robotoregular";
+        }
+
+        .aui #footer {
+            background: #426da9 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
+    <style>
+        #header-sroll {
+            background: #FFFFFF !important;
+        }
+    </style>
+    <style>
+        .aui body {
+            background: #f6f6f6 !important;
+        }
+    </style>
+    <style>
+        .aui #navigation {
+            background: #426da9 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
+    <style>
+        .aui .btn-primary,
+        .aui .btn:after,
+        .aui .btn-primary:after,
+        input[type=checkbox]:before {
+            border: solid 2px #426da9 !important;
+            background: #426da9 !important;
+            color: #FFFFFF !important;
+        }
+    </style>
+    <style>
+        .aui .label {
+            background: none;
+        }
+
+        .aui .help-inline {
+            display: inline;
+        }
+
+        .control-group {
+            display: inline-block;
+        }
+
+        .control-label {
+            text-align: left;
+            font-weight: 400 !important;
+            color: #333333 !important;
+            font-size: 14px !important;
+            line-height: 16px !important;
+            margin-bottom: 10px !important;
+        }
+
+        .headerow {
+            z-index: 301;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+
+        #header-sroll {
+            height: 5em;
+            left: 0;
+            top: 0;
+            float: left;
+            width: 100%;
+            -ms-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        #header-sroll h1 {
+            text-align: left;
+            font-size: 30px;
+            font-family: Arial;
+            line-height: 50px;
+            -ms-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        #header-sroll.small {
+            height: 4.5em;
+            line-height: 35px;
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        #header-sroll.small h1 {
+            height: 5px;
+            line-height: 35px;
+            font-size: 25px;
+        }
+
+        @media (max-width: 979px) {
+            .content-portlet {
+                PADDING-TOP: 5EM;
+            }
+
+            .aui .dockbar-vertical .icon-toggle-dockbar {
+                display: none;
+            }
+        }
+
+        #header-sroll h1 a img {
+            width: 5.5em;
+            -ms-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        #header-sroll.small h1 a img {
+            width: 5em;
+            -ms-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        @media (max-width: 767px) {
+            .aui body {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            .aui select {
+                width: 100%;
+            }
+
+            .aui select {
+                width: 240px !important;
+            }
+
+            .content-portlet {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+
+        .toggler-header-collapsed,
+        .toggler-header-expanded {
+            padding: 0px !important;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0px !important;
+        }
+
+        .aui body {
+            background: #f6f6f6;
+        }
+
+        .content-portlet {
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+
+        .portlet-content {
+            background: #fff;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        .aui select {
+            pointer-events: auto !important;
+            display: block !important;
+            font-weight: 400 !important;
+            padding: 5px 10px !important;
+            line-height: 22.4px !important;
+            border-radius: 4px !important;
+            width: 220px;
+            transition: border-color 0.15s ease !important;
+        }
+
+        .aui select {
+            width: 242px !important;
+            -webkit-appearance: menulist-button;
+            height: 33.4px !important;
+        }
+
+        textarea {
+            pointer-events: auto !important;
+            display: block !important;
+            box-sizing: border-box !important;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            padding: 5px 10px !important;
+            height: auto !important;
+            line-height: 22.4px !important;
+            border-radius: 4px !important;
+            transition: border-color 0.15s ease !important;
+        }
+
+        .error-field {
+            background: #fff5f7 !important;
+        }
+
+        .help-inline {
+            text-align: left !important;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .aui .control-group.success input:focus,
+        textarea:focus,
+        .aui .control-group.success select:focus,
+        .aui .control-group.success textarea:focus .aui textarea:focus,
+        .aui input[type="text"]:focus,
+        .aui input[type="password"]:focus,
+        .aui input[type="datetime"]:focus,
+        .aui input[type="datetime-local"]:focus,
+        .aui input[type="date"]:focus,
+        .aui input[type="month"]:focus,
+        .aui input[type="time"]:focus,
+        .aui input[type="week"]:focus,
+        .aui input[type="number"]:focus,
+        .aui input[type="email"]:focus,
+        .aui input[type="url"]:focus,
+        .aui input[type="search"]:focus,
+        .aui input[type="tel"]:focus,
+        .aui input[type="color"]:focus,
+        .aui .uneditable-input:focus {
+            border-color: #426da9;
+            -webkit-box-shadow: inset 0 1px 1px rgb(66, 109, 169), 0 0 6px #426da9 !important;
+            -moz-box-shadow: inset 0 1px 1px rgb(66, 109, 169), 0 0 6px #426da9 !important;
+            box-shadow: inset 0 1px 1px rgb(66, 109, 169), 0 0 6px #426da9 !important;
+        }
+
+        .aui .control-group.success input,
+        .aui .control-group.success select,
+        .aui .control-group.success textarea {
+            color: #000;
+            border-color: #426da9;
+        }
+
+        .toggler-header-expanded {
+            background-color: transparent;
+            border-bottom: 1px solid #cccccc;
+            margin: 0 20px;
+            padding: 10px 0 9px;
+            width: auto;
+        }
+
+        .aui .btn,
+        .aui .btn-primary {
+            text-align: center;
+            vertical-align: text-bottom;
+            touch-action: manipulation;
+            background-image: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 16px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 8px 20px;
+            overflow: visible;
+            align-items: flex-end;
+            transition: background-color 0.15s ease;
+        }
+
+        .aui .btn:after,
+        .aui .btn-primary:after {
+            text-align: center;
+            vertical-align: text-bottom;
+            touch-action: manipulation;
+            background-image: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 16px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 8px 20px;
+            overflow: visible;
+            align-items: flex-end;
+            transition: background-color 0.15s ease;
+        }
+
+        @media (max-width: 767px) and (max-width: 979px) {
+            .aui .btn {
+                width: auto;
+                display: inline;
+            }
+        }
+
+        .custom_footer {
+            background: #273660;
+            border-top: 4px solid #b23a2f;
+            position: relative;
+            height: 100%;
+            padding: 0em 5em;
+        }
+
+        .aui #footer {
+            -webkit-box-shadow: 0px 1px 5px black;
+            -moz-box-shadow: 0px 1px 5px black;
+            -ms-box-shadow: 0px 1px 5px black;
+            box-shadow: 0px 1px 5px black;
+            width: 100%;
+            left: 0px;
+            bottom: 0px;
+        }
+
+        input[type=checkbox] {
+            position: relative;
+            margin-right: 12px !important;
+        }
+
+        input[type=checkbox]:before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            border: solid 2px #426da9;
+            background: white;
+            position: absolute;
+            box-sizing: border-box;
+            border-radius: 3px;
+            margin-top: -2px;
+            padding: 2px;
+            margin-left: -4px;
+        }
+
+        input[type=checkbox]:after {
+            content: "";
+            width: 10px;
+            height: 4px;
+            border: solid 2px #fff;
+            border-top: 0;
+            border-right: 0;
+            position: absolute;
+            top: 3px;
+            left: 1px;
+            transform: rotate(-45deg);
+            opacity: 0;
+            transition: all .2s ease-out;
+        }
+
+        input[type=checkbox]:checked:after {
+            opacity: 1;
+        }
+
+        input[type=checkbox]:checked:before {
+            background: #426da9;
+        }
+
+        .chkleft {
+            text-align: center !important;
+            margin-left: 0px !important;
+            display: inline-block;
+        }
+
+        .input-checkbox-wrapper {
+            margin-bottom: 6px !important;
+            display: table;
+        }
+    </style>
+</head>
+
+<body class=" yui3-skin-sam controls-visible signed-out public-page site dockbar-vertical navigation-left"> <a
+        href="#main-content" id="skip-to-content">Skip to Content</a>
+    <div class="headerow">
+        <div id="header-sroll">
+            <h1>
+                <div class="navigation-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div> <a
+                    href="https://dev-digiassist.experian.com.sg:443/web/seasite2/chat?p_p_auth=LvleiEe1&amp;p_p_id=49&amp;p_p_lifecycle=1&amp;p_p_state=normal&amp;p_p_mode=view&amp;_49_struts_action=%2Fmy_sites%2Fview&amp;_49_groupId=21602&amp;_49_privateLayout=false"
+                    title="Go to SEAsite2"> <img alt="SEAsite2"
+                        src="/image/layout_set_logo?img_id=30185&amp;t=1579763015851" /> </a>
+            </h1>
+        </div>
+    </div>
+    <style>
+        @media (max-width: 979px) {
+            .aui #navigation {
+                display: block !important;
+            }
+        }
+
+        .profile_pic {
+            width: 35%;
+            float: left;
+        }
+
+        .img-circle.profile_img {
+            width: 70%;
+            background: #fff;
+            margin-left: 15%;
+            z-index: 1000;
+            position: inherit;
+            margin-top: 20px;
+            border: 1px solid rgba(52, 73, 94, .44);
+            padding: 4px;
+        }
+
+        .img-circle {
+            border-radius: 50%;
+        }
+
+        .profile_info {
+            padding: 25px 10px 10px;
+            width: 52%;
+            float: left;
+        }
+
+        .profile_info span {
+            font-size: 13px;
+            line-height: 30px;
+            color: #BAB8B8;
+        }
+
+        .profile_info h2 {
+            font-size: 14px;
+            color: #ECF0F1;
+            margin: 0;
+            font-weight: 300;
+            text-transform: capitalize;
+            display: inline;
+            line-height: 0px;
+        }
+
+        .sidebarMenu {
+            width: 185px;
+            position: absolute;
+        }
+
+        .sidebarMenu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sidebarMenu ul li {
+            margin: 0;
+            padding-left: 10px;
+        }
+
+        .sidebarMenu ul li a {
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 100;
+            color: black;
+            font-family: helvetica;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #5885b2;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            -ms-transition: background 0.3s ease-in-out;
+            -o-transition: background 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out;
+        }
+
+        a:hover {}
+
+        .sidebarMenu li:hover .submenu {
+            /* display:block;*/
+            display: block;
+            max-height: 200px;
+        }
+
+        .submenu a {}
+
+        .submenu a:hover {}
+
+        .submenu {
+            overflow: hidden;
+            /*overflow: hidden;*/
+            max-height: 0;
+            -webkit-transition: all 1.0s ease-out;
+        }
+
+        .sidebarMenu li:hover .submenuB {
+            /* display:block;*/
+            display: block;
+            max-height: 200px;
+        }
+
+        .submenuB a {}
+
+        .submenuB a:hover {}
+
+        .submenuB {
+            /* to turn submenus always on*/
+            display: block;
+        }
+    </style> <span class="back-nav"></span>
+    <nav class="sort-pages modify-pages" id="navigation" role="navigation">
+        <div class="sidebarMenu">
+            <ul aria-label="Site Pages" role="menubar">
+                <li id="layout_10" aria-selected='true' role="presentation"> <a aria-labelledby="layout_10"
+                        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;chat"
+                        role="menuitem"><span>chat</span></a> </li>
+                <li id="layout_2" role="presentation"> <a aria-labelledby="layout_2"
+                        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;collection-journey"
+                        role="menuitem"><span>Collection journey</span></a> </li>
+                <li id="layout_3" role="presentation"> <a aria-labelledby="layout_3"
+                        href="https&#x3a;&#x2f;&#x2f;dev-digiassist&#x2e;experian&#x2e;com&#x2e;sg&#x2f;web&#x2f;seasite2&#x2f;chat1"
+                        role="menuitem"><span>Chat1</span></a> </li>
+                <hr>
+                </hr>
+                <li role="presentation"> <a href="https://dev-digiassist.experian.com.sg/c/portal/login?p_l_id=30434"
+                        class="sign-in" rel="nofollow" role="menuitem"><small>Sign In</small></a> </li>
+            </ul>
+        </div>
+    </nav>
+    <script
+        type="text/javascript">function openMyAccount() { var a = "$theme_display.getURLMyAccount()"; var b = Liferay.Util.openWindow({ dialog: { align: Liferay.Util.Window.ALIGN_CENTER, cache: false, width: 1200, modal: true }, title: "My Account", id: "myAccountPopUpID", uri: a }) };</script>
+    <div id="content" class="content-portlet">
+        <div class="columns-1" id="main-content" role="main">
+            <div class="portlet-layout row-fluid">
+                <div class="portlet-column portlet-column-only span12" id="column-1">
+                    <div class="portlet-dropzone portlet-column-content portlet-column-content-only"
+                        id="layout-column_column-1">
+                        <div class="portlet-boundary portlet-boundary_chatbotportlet_WAR_chatbotportlet_ portlet-static portlet-static-end "
+                            id="p_p_id_chatbotportlet_WAR_chatbotportlet_"> <span
+                                id="p_chatbotportlet_WAR_chatbotportlet"></span>
+                            <style>
+                                .aui .portlet,
+                                .aui .portlet-borderless-container {
+                                    background: #FFF;
+                                    margin-bottom: 10px;
+                                    padding: 0;
+                                    margin-top: 20px;
+                                }
+
+                                .aui .portlet-topper {
+                                    -webkit-border-radius: 3px 3px 0 0;
+                                    -moz-border-radius: 3px 3px 0 0;
+                                    border-radius: 3px 3px 0 0;
+                                }
+
+                                .aui .portlet-topper {
+                                    background: transparent;
+                                    padding: 0;
+                                }
+
+                                .aui .signed-in.controls-visible .portlet-title {
+                                    color: #b23a2f;
+                                }
+
+                                .aui .signed-in.controls-visible .portlet-title {
+                                    padding-right: 80px;
+                                    background: #ffffff;
+                                    color: white;
+                                }
+
+                                .aui .portlet-topper .portlet-title {
+                                    padding: 3px 0px;
+                                    font-size: 1em;
+                                    font-weight: normal;
+                                    font-family: 'lato-regular-webfont';
+                                    line-height: 2.2;
+                                    margin: 0;
+                                    color: #b23a2f;
+                                    background: transparent !important;
+                                    position: relative;
+                                    height: 36px;
+                                }
+
+                                .aui .portlet-topper .portlet-title {
+                                    padding: 3px 0px;
+                                    font-size: 1em;
+                                    font-weight: normal;
+                                    line-height: 2.2;
+                                    margin: 0;
+                                    color: #b23a2f;
+                                    background: transparent !important;
+                                    position: relative;
+                                    height: 36px;
+                                }
+
+                                .aui .portlet-topper .portlet-title-text {
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    left: 10px;
+                                    z-index: 11;
+                                    background: #fff;
+                                    position: absolute;
+                                    padding: 0px 14px;
+                                    max-width: 60%;
+                                }
+
+                                .aui .portlet-topper .portlet-title:after {
+                                    content: "";
+                                    display: block;
+                                    width: 100%;
+                                    position: absolute;
+                                    left: 0px;
+                                    height: 5px;
+                                    background: #273660;
+                                    z-index: 1;
+                                    top: 50%;
+                                    margin: -5px auto;
+                                }
+
+                                .aui .signed-in.controls-visible .portlet-title {
+                                    color: #b23a2f;
+                                }
+
+                                .aui .portlet-topper .portlet-title span img {
+                                    display: none;
+                                }
+
+                                .portlet-topper .portlet-topper-toolbar a i {
+                                    background: white;
+                                }
+
+                                .aui .portlet-options .dropdown-toggle .icon-cog:before {
+                                    height: 30px;
+                                    display: block;
+                                    COLOR: #767676;
+                                    PADDING: 4px 10px;
+                                }
+                            </style>
+                            <section class="portlet" id="portlet_chatbotportlet_WAR_chatbotportlet">
+                                <header class="portlet-topper">
+                                    <h1 class="portlet-title"> <span class=""
+                                            onmouseover="Liferay.Portal.ToolTip.show(this, 'chatbot-portlet')"> <img
+                                                id="rjus_column1_0" src="/chatbot-portlet/icon.png" alt="" /> <span
+                                                class="taglib-text hide-accessible">chatbot-portlet</span> </span> <span
+                                            class="portlet-title-text">chatbot-portlet</span> </h1>
+                                    <menu class="portlet-topper-toolbar"
+                                        id="portlet-topper-toolbar_chatbotportlet_WAR_chatbotportlet" type="toolbar">
+                                    </menu>
+                                </header>
+                                <div class="portlet-content">
+                                    <div class=" portlet-content-container" style="">
+                                        <div class="portlet-body">
+
+                                            <head>
+                                                <meta charset="utf-8">
+                                                <title>title</title>
+                                                <script
+                                                    src="https://web-chat.nativechat.com/1.5.0/sdk/nativechat.js"></script>
+                                                <link href="https://web-chat.nativechat.com/1.5.0/sdk/nativechat.css"
+                                                    rel="stylesheet" type="text/css">
+                                            </head>
+
+                                            <body>
+                                                <p>Chat</p>
+                                            </body>
+                                            <script>
+                                                // var chatSettings = {
+                                                //     bot: {
+                                                //         avatarUrl: "https://webchat.nativechat.com/v1/sdk/chat-open.svg",
+                                                //         id: "5bb121f9accb650325e323e9"
+                                                //     },
+                                                //     channel: {
+                                                //         id: "9f6a108c-cfcf-434f-918b-22cdd447b5fe",
+                                                //         token: "5946cc56-d6a1-4786-8024-4b2f656ea954"
+                                                //     },
+                                                //     // css: ["https://demo.athracian.com/css/styles.css"],
+                                                //     googleApiKey: "AIzaSyB74n0fCxZBsF8-eqn0p0XycxLWL3HZTl4",
+                                                //     session: {
+                                                //         clear: true,
+                                                //         userMessage: "hi"
+                                                //     },
+                                                //     user: {
+                                                //         id: "<your user id>",
+                                                //         name: "<your user name>",
+                                                //         token: "<your user token>",
+                                                //     },
+                                                //     showDebugConsole: false
+                                                // };
+                                                // window.NativeChat.load({
+                                                //     id: "modal-chat",
+                                                //     origin: "*",
+                                                //     display: {
+                                                //         mode: "modal",
+                                                //         launcher: {
+                                                //             openIconUrl: "<path to an image (PNG)>",
+                                                //             closeIconUrl: "<path to an image (PNG)>"
+                                                //         }
+                                                //     },
+                                                //     chat: chatSettings
+                                                // });
+
+                                                var chatSettings = {
+                                                    bot: {
+                                                        avatarUrl: "https://webchat.nativechat.com/v1/sdk/chat-open.svg",
+                                                        id: "9c260a980092446b8abbe936"
+                                                    },
+                                                    channel: {
+                                                        id: "8141da57-0a2b-44c9-b930-907855b5de42",
+                                                        token: "58cdc2d0-49b3-44c7-b1a8-d3ee5b8c2b23"
+                                                    },
+                                                    // css: ["https://demo.athracian.com/css/styles.css"],
+                                                    googleApiKey: "AIzaSyB74n0fCxZBsF8-eqn0p0XycxLWL3HZTl4",
+                                                    session: {
+                                                        clear: true,
+                                                        userMessage: "hi"
+                                                    },
+                                                    user: {
+                                                        id: "<your user id>",
+                                                        name: "<your user name>",
+                                                        token: "<your user token>",
+                                                    },
+                                                    showDebugConsole: false
+                                                };
+                                                window.NativeChat.load({
+                                                    id: "modal-chat",
+                                                    origin: "*",
+                                                    display: {
+                                                        mode: "modal",
+                                                        launcher: {
+                                                            openIconUrl: "<path to an image (PNG)>",
+                                                            closeIconUrl: "<path to an image (PNG)>"
+                                                        }
+                                                    },
+                                                    chat: chatSettings
+                                                });
+                                            </script>
+
+</html>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+<form action="#" id="hrefFm" method="post" name="hrefFm"> <span></span> </form>
+</div>
+<footer id="footer" role="contentinfo"> </footer>
+<script
+    src="https://dev-digiassist.experian.com.sg/chatbot-portlet/js/main.js?browserId=firefox&amp;minifierType=js&amp;languageId=en_US&amp;b=6205&amp;t=1579688749000"
+    type="text/javascript"></script>
+<script
+    src="https://dev-digiassist.experian.com.sg/notifications-portlet/notifications/js/main.js?browserId=firefox&amp;minifierType=js&amp;languageId=en_US&amp;b=6205&amp;t=1578979737000"
+    type="text/javascript"></script>
+<script type="text/javascript">Liferay.Util.addInputFocus();</script>
+<script
+    type="text/javascript">Liferay.Portlet.onLoad({ canEditTitle: false, columnPos: 0, isStatic: "end", namespacedId: "p_p_id_chatbotportlet_WAR_chatbotportlet_", portletId: "chatbotportlet_WAR_chatbotportlet", refreshURL: "\x2fc\x2fportal\x2frender_portlet\x3fp_l_id\x3d30434\x26p_p_id\x3dchatbotportlet_WAR_chatbotportlet\x26p_p_lifecycle\x3d0\x26p_t_lifecycle\x3d0\x26p_p_state\x3dnormal\x26p_p_mode\x3dview\x26p_p_col_id\x3dcolumn-1\x26p_p_col_pos\x3d0\x26p_p_col_count\x3d1\x26p_p_isolated\x3d1\x26currentURL\x3d\x252Fweb\x252Fseasite2\x252Fchat" }); AUI().use("aui-base", "liferay-menu", "liferay-notice", "liferay-poller", "liferay-session", function (a) { (function () { Liferay.Util.addInputType(); Liferay.Portlet.ready(function (b, c) { Liferay.Util.addInputType(c) }); if (a.UA.mobile) { Liferay.Util.addInputCancel() } })(); (function () { new Liferay.Menu(); var b = Liferay.Data.notices; for (var c = 1; c < b.length; c++) { new Liferay.Notice(b[c]) } })(); (function () { Liferay.Session = new Liferay.SessionBase({ autoExtend: true, sessionLength: 30, redirectOnExpire: false, redirectUrl: "https\x3a\x2f\x2fdev-digiassist\x2eexperian\x2ecom\x2esg\x2fweb\x2fguest", warningLength: 1 }) })() });</script>
+<script
+    src="https://dev-digiassist.experian.com.sg/verticle/js/main.js?browserId=firefox&amp;minifierType=js&amp;languageId=en_US&amp;b=6205&amp;t=1567664802000"
+    type="text/javascript"></script>
+<script type="text/javascript"></script>
+</body>
+<script>$(window).scroll(function () { var a = $(window).scrollTop(); if (a > 100) { $("#header-sroll").addClass("small") } else { $("#header-sroll").removeClass("small") } });</script>
+
+</html>
