@@ -1,273 +1,218 @@
 <!DOCTYPE html>
 <html class="h-100">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>SPA SDK Sample</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/auth0-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
-      integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
-      integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
+        integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
+        integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.auth0.com/js/auth0-samples-theme/1.0/css/auth0-theme.min.css"
-    />
-  </head>
+    <link rel="stylesheet" href="https://cdn.auth0.com/js/auth0-samples-theme/1.0/css/auth0-theme.min.css" />
+</head>
 
-  <body class="h-100">
+<body class="h-100">
     <div id="app" class="h-100 d-flex flex-column">
-      <div class="nav-container">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-          <div class="container">
-            <div class="navbar-brand logo"></div>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="nav-container">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <div class="container">
+                    <div class="navbar-brand logo"></div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a href="/" class="nav-link route-link">Home</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav d-none d-md-block">
-                <!-- Login button: show if NOT authenticated -->
-                <li class="nav-item auth-invisible">
-                  <button
-                    id="qsLoginBtn"
-                    onclick="login()"
-                    class="btn btn-primary btn-margin auth-invisible hidden"
-                  >
-                    Log in
-                  </button>
-                </li>
-                <!-- / Login button -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link route-link">Home</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav d-none d-md-block">
+                            <!-- Login button: show if NOT authenticated -->
+                            <li class="nav-item auth-invisible">
+                                <button id="qsLoginBtn" onclick="login()"
+                                    class="btn btn-primary btn-margin auth-invisible hidden">
+                                    Log in
+                                </button>
+                            </li>
+                            <!-- / Login button -->
 
-                <!-- Fullsize dropdown: show if authenticated -->
-                <li class="nav-item dropdown auth-visible hidden">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="profileDropDown"
-                    data-toggle="dropdown"
-                  >
-                    <!-- Profile image should be set to the profile picture from the id token -->
-                    <img
-                      alt="Profile picture"
-                      class="nav-user-profile profile-image rounded-circle"
-                      width="50"
-                    />
-                  </a>
-                  <div class="dropdown-menu">
-                    <!-- Show the user's full name from the id token here -->
-                    <div class="dropdown-header nav-user-name user-name"></div>
-                    <a
-                      href="/profile"
-                      class="dropdown-item dropdown-profile route-link"
-                    >
-                      <i class="fas fa-user mr-3"></i> Profile
-                    </a>
-                    <a
-                      href="#"
-                      class="dropdown-item"
-                      id="qsLogoutBtn"
-                      onclick="logout()"
-                    >
-                      <i class="fas fa-power-off mr-3"></i> Log out
-                    </a>
-                  </div>
-                </li>
-                <!-- /Fullsize dropdown -->
-              </ul>
+                            <!-- Fullsize dropdown: show if authenticated -->
+                            <li class="nav-item dropdown auth-visible hidden">
+                                <a class="nav-link dropdown-toggle" href="#" id="profileDropDown"
+                                    data-toggle="dropdown">
+                                    <!-- Profile image should be set to the profile picture from the id token -->
+                                    <img alt="Profile picture" class="nav-user-profile profile-image rounded-circle"
+                                        width="50" />
+                                </a>
+                                <div class="dropdown-menu">
+                                    <!-- Show the user's full name from the id token here -->
+                                    <div class="dropdown-header nav-user-name user-name"></div>
+                                    <a href="/profile" class="dropdown-item dropdown-profile route-link">
+                                        <i class="fas fa-user mr-3"></i> Profile
+                                    </a>
+                                    <a href="#" class="dropdown-item" id="qsLogoutBtn" onclick="logout()">
+                                        <i class="fas fa-power-off mr-3"></i> Log out
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- /Fullsize dropdown -->
+                        </ul>
 
-              <!-- Responsive login button: show if NOT authenticated -->
-              <ul class="navbar-nav d-md-none auth-invisible">
-                <button
-                  class="btn btn-primary btn-block auth-invisible hidden"
-                  id="qsLoginBtn"
-                  onclick="login()"
-                >
-                  Log in
-                </button>
-              </ul>
-              <!-- /Responsive login button -->
+                        <!-- Responsive login button: show if NOT authenticated -->
+                        <ul class="navbar-nav d-md-none auth-invisible">
+                            <button class="btn btn-primary btn-block auth-invisible hidden" id="qsLoginBtn"
+                                onclick="login()">
+                                Log in
+                            </button>
+                        </ul>
+                        <!-- /Responsive login button -->
 
-              <!-- Responsive profile dropdown: show if authenticated -->
-              <ul
-                class="navbar-nav d-md-none auth-visible hidden justify-content-between"
-                style="min-height: 125px"
-              >
-                <li class="nav-item">
-                  <span class="user-info">
-                    <!-- Profile image should be set to the profile picture from the id token -->
-                    <img
-                      alt="Profile picture"
-                      class="nav-user-profile d-inline-block profile-image rounded-circle mr-3"
-                      width="50"
-                    />
-                    <!-- Show the user's full name from the id token here -->
-                    <h6 class="d-inline-block nav-user-name user-name"></h6>
-                  </span>
-                </li>
-                <li>
-                  <i class="fas fa-user mr-3"></i>
-                  <a href="/profile" class="route-link">Profile</a>
-                </li>
+                        <!-- Responsive profile dropdown: show if authenticated -->
+                        <ul class="navbar-nav d-md-none auth-visible hidden justify-content-between"
+                            style="min-height: 125px">
+                            <li class="nav-item">
+                                <span class="user-info">
+                                    <!-- Profile image should be set to the profile picture from the id token -->
+                                    <img alt="Profile picture"
+                                        class="nav-user-profile d-inline-block profile-image rounded-circle mr-3"
+                                        width="50" />
+                                    <!-- Show the user's full name from the id token here -->
+                                    <h6 class="d-inline-block nav-user-name user-name"></h6>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fas fa-user mr-3"></i>
+                                <a href="/profile" class="route-link">Profile</a>
+                            </li>
 
-                <li>
-                  <i class="fas fa-power-off mr-3"></i>
-                  <a href="#" id="qsLogoutBtn" onclick="logout()">Log out</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <div id="main-content" class="container mt-5 flex-grow-1">
-        <div id="content-home" class="page">
-          <div class="text-center hero">
-            <img
-              class="mb-3 app-logo"
-              src="/images/logo.png"
-              alt="JavaScript logo"
-              width="75"
-            />
-            <h1 class="mb-4">JavaScript Sample Project</h1>
-
-            <p class="lead">
-              This is a sample application that demonstrates an authentication
-              flow for an SPA, using plain JavaScript
-            </p>
-          </div>
-
-          <div class="next-steps">
-            <h2 class="my-5 text-center">What can I do next?</h2>
-
-            <div class="row">
-              <div class="col-md-5 mb-4">
-                <h6 class="mb-3">
-                  <a href="https://auth0.com/docs/connections">
-                    <i class="fas fa-link"></i> Configure other identity
-                    providers
-                  </a>
-                </h6>
-                <p>
-                  Auth0 supports social providers as Facebook, Twitter,
-                  Instagram and 100+, Enterprise providers as Microsoft Office
-                  365, Google Apps, Azure, and more. You can also use any OAuth2
-                  Authorization Server.
-                </p>
-              </div>
-
-              <div class="col-md"></div>
-
-              <div class="col-md-5 mb-4">
-                <h6 class="mb-3">
-                  <a href="https://auth0.com/docs/multifactor-authentication">
-                    <i class="fas fa-link"></i> Enable Multifactor
-                    Authentication
-                  </a>
-                </h6>
-                <p>
-                  Add an extra layer of security by enabling Multi-factor
-                  Authentication, requiring your users to provide more than one
-                  piece of identifying information. Push notifications,
-                  authenticator apps, SMS, and DUO Security are supported.
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-5 mb-4">
-                <h6 class="mb-3">
-                  <a href="https://auth0.com/docs/anomaly-detection">
-                    <i class="fas fa-link"></i> Anomaly Detection
-                  </a>
-                </h6>
-                <p>
-                  Auth0 can detect anomalies and stop malicious attempts to
-                  access your application. Anomaly detection can alert you and
-                  your users of suspicious activity, as well as block further
-                  login attempts.
-                </p>
-              </div>
-
-              <div class="col-md"></div>
-
-              <div class="col-md-5 mb-4">
-                <h6 class="mb-3">
-                  <a href="https://auth0.com/docs/rules">
-                    <i class="fas fa-link"></i> Learn About Rules
-                  </a>
-                </h6>
-                <p>
-                  Rules are JavaScript functions that execute when a user
-                  authenticates to your application. They run once the
-                  authentication process is complete, and you can use them to
-                  customize and extend Auth0's capabilities.
-                </p>
-              </div>
-            </div>
-          </div>
+                            <li>
+                                <i class="fas fa-power-off mr-3"></i>
+                                <a href="#" id="qsLogoutBtn" onclick="logout()">Log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
 
-        <div class="page" id="content-profile">
-          <div class="container">
-            <div class="row align-items-center profile-header">
-              <div class="col-md-2">
-                <img
-                  alt="User's profile picture"
-                  class="rounded-circle img-fluid profile-image mb-3 mb-md-0"
-                />
-              </div>
-              <div class="col-md">
-                <h2 class="user-name"></h2>
-                <p class="lead text-muted user-email"></p>
-              </div>
+        <div id="main-content" class="container mt-5 flex-grow-1">
+            <div id="content-home" class="page">
+                <div class="text-center hero">
+                    <img class="mb-3 app-logo" src="/images/logo.png" alt="JavaScript logo" width="75" />
+                    <h1 class="mb-4">JavaScript Sample Project</h1>
+
+                    <p class="lead">
+                        This is a sample application that demonstrates an authentication
+                        flow for an SPA, using plain JavaScript
+                    </p>
+                </div>
+
+                <div class="next-steps">
+                    <h2 class="my-5 text-center">What can I do next?</h2>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-4">
+                            <h6 class="mb-3">
+                                <a href="https://auth0.com/docs/connections">
+                                    <i class="fas fa-link"></i> Configure other identity
+                                    providers
+                                </a>
+                            </h6>
+                            <p>
+                                Auth0 supports social providers as Facebook, Twitter,
+                                Instagram and 100+, Enterprise providers as Microsoft Office
+                                365, Google Apps, Azure, and more. You can also use any OAuth2
+                                Authorization Server.
+                            </p>
+                        </div>
+
+                        <div class="col-md"></div>
+
+                        <div class="col-md-5 mb-4">
+                            <h6 class="mb-3">
+                                <a href="https://auth0.com/docs/multifactor-authentication">
+                                    <i class="fas fa-link"></i> Enable Multifactor
+                                    Authentication
+                                </a>
+                            </h6>
+                            <p>
+                                Add an extra layer of security by enabling Multi-factor
+                                Authentication, requiring your users to provide more than one
+                                piece of identifying information. Push notifications,
+                                authenticator apps, SMS, and DUO Security are supported.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-4">
+                            <h6 class="mb-3">
+                                <a href="https://auth0.com/docs/anomaly-detection">
+                                    <i class="fas fa-link"></i> Anomaly Detection
+                                </a>
+                            </h6>
+                            <p>
+                                Auth0 can detect anomalies and stop malicious attempts to
+                                access your application. Anomaly detection can alert you and
+                                your users of suspicious activity, as well as block further
+                                login attempts.
+                            </p>
+                        </div>
+
+                        <div class="col-md"></div>
+
+                        <div class="col-md-5 mb-4">
+                            <h6 class="mb-3">
+                                <a href="https://auth0.com/docs/rules">
+                                    <i class="fas fa-link"></i> Learn About Rules
+                                </a>
+                            </h6>
+                            <p>
+                                Rules are JavaScript functions that execute when a user
+                                authenticates to your application. They run once the
+                                authentication process is complete, and you can use them to
+                                customize and extend Auth0's capabilities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-              <pre class="rounded">
+            <div class="page" id="content-profile">
+                <div class="container">
+                    <div class="row align-items-center profile-header">
+                        <div class="col-md-2">
+                            <img alt="User's profile picture"
+                                class="rounded-circle img-fluid profile-image mb-3 mb-md-0" />
+                        </div>
+                        <div class="col-md">
+                            <h2 class="user-name"></h2>
+                            <p class="lead text-muted user-email"></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <pre class="rounded">
                 <code id="profile-data" class="json"></code></pre>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <footer class="bg-light text-center p-5">
-        <div class="logo"></div>
-        <p>
-          Sample project provided by
-          <a href="https://auth0.com">Auth0</a>
-        </p>
-      </footer>
+        <footer class="bg-light text-center p-5">
+            <div class="logo"></div>
+            <p>
+                Sample project provided by
+                <a href="https://auth0.com">Auth0</a>
+            </p>
+        </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -277,252 +222,255 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
     <script>
         // URL mapping, from hash to a function that responds to that URL action
-const router = {
-  "/": () => showContent("content-home"),
-  "/profile": () =>
-    requireAuth(() => showContent("content-profile"), "/profile"),
-  "/login": () => login()
-};
+        const router = {
+            "/": () => showContent("content-home"),
+            "/profile": () =>
+                requireAuth(() => showContent("content-profile"), "/profile"),
+            "/login": () => login()
+        };
 
-//Declare helper functions
+        //Declare helper functions
 
-/**
- * Iterates over the elements matching 'selector' and passes them
- * to 'fn'
- * @param {*} selector The CSS selector to find
- * @param {*} fn The function to execute for every element
- */
-const eachElement = (selector, fn) => {
-  for (let e of document.querySelectorAll(selector)) {
-    fn(e);
-  }
-};
+        /**
+         * Iterates over the elements matching 'selector' and passes them
+         * to 'fn'
+         * @param {*} selector The CSS selector to find
+         * @param {*} fn The function to execute for every element
+         */
+        const eachElement = (selector, fn) => {
+            for (let e of document.querySelectorAll(selector)) {
+                fn(e);
+            }
+        };
 
-/**
- * Tries to display a content panel that is referenced
- * by the specified route URL. These are matched using the
- * router, defined above.
- * @param {*} url The route URL
- */
-const showContentFromUrl = (url) => {
-  if (router[url]) {
-    router[url]();
-    return true;
-  }
+        /**
+         * Tries to display a content panel that is referenced
+         * by the specified route URL. These are matched using the
+         * router, defined above.
+         * @param {*} url The route URL
+         */
+        const showContentFromUrl = (url) => {
+            if (router[url]) {
+                router[url]();
+                return true;
+            }
 
-  return false;
-};
+            return false;
+        };
 
-/**
- * Returns true if `element` is a hyperlink that can be considered a link to another SPA route
- * @param {*} element The element to check
- */
-const isRouteLink = (element) =>
-  element.tagName === "A" && element.classList.contains("route-link");
+        /**
+         * Returns true if `element` is a hyperlink that can be considered a link to another SPA route
+         * @param {*} element The element to check
+         */
+        const isRouteLink = (element) =>
+            element.tagName === "A" && element.classList.contains("route-link");
 
-/**
- * Displays a content panel specified by the given element id.
- * All the panels that participate in this flow should have the 'page' class applied,
- * so that it can be correctly hidden before the requested content is shown.
- * @param {*} id The id of the content to show
- */
-const showContent = (id) => {
-  eachElement(".page", (p) => p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-};
+        /**
+         * Displays a content panel specified by the given element id.
+         * All the panels that participate in this flow should have the 'page' class applied,
+         * so that it can be correctly hidden before the requested content is shown.
+         * @param {*} id The id of the content to show
+         */
+        const showContent = (id) => {
+            eachElement(".page", (p) => p.classList.add("hidden"));
+            document.getElementById(id).classList.remove("hidden");
+        };
 
-/**
- * Updates the user interface
- */
-const updateUI = async () => {
-  try {
-    const isAuthenticated = await auth0.isAuthenticated();
+        /**
+         * Updates the user interface
+         */
+        const updateUI = async () => {
+            try {
+                const isAuthenticated = await auth0.isAuthenticated();
 
-    if (isAuthenticated) {
-      const user = await auth0.getUser();
+                if (isAuthenticated) {
+                    const user = await auth0.getUser();
 
-      document.getElementById("profile-data").innerText = JSON.stringify(
-        user,
-        null,
-        2
-      );
+                    document.getElementById("profile-data").innerText = JSON.stringify(
+                        user,
+                        null,
+                        2
+                    );
 
-      document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
+                    document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
 
-      eachElement(".profile-image", (e) => (e.src = user.picture));
-      eachElement(".user-name", (e) => (e.innerText = user.name));
-      eachElement(".user-email", (e) => (e.innerText = user.email));
-      eachElement(".auth-invisible", (e) => e.classList.add("hidden"));
-      eachElement(".auth-visible", (e) => e.classList.remove("hidden"));
-    } else {
-      eachElement(".auth-invisible", (e) => e.classList.remove("hidden"));
-      eachElement(".auth-visible", (e) => e.classList.add("hidden"));
-    }
-  } catch (err) {
-    console.log("Error updating UI!", err);
-    return;
-  }
+                    eachElement(".profile-image", (e) => (e.src = user.picture));
+                    eachElement(".user-name", (e) => (e.innerText = user.name));
+                    eachElement(".user-email", (e) => (e.innerText = user.email));
+                    eachElement(".auth-invisible", (e) => e.classList.add("hidden"));
+                    eachElement(".auth-visible", (e) => e.classList.remove("hidden"));
+                } else {
+                    eachElement(".auth-invisible", (e) => e.classList.remove("hidden"));
+                    eachElement(".auth-visible", (e) => e.classList.add("hidden"));
+                }
+            } catch (err) {
+                console.log("Error updating UI!", err);
+                return;
+            }
 
-  console.log("UI updated");
-};
+            console.log("UI updated");
+        };
 
-window.onpopstate = (e) => {
-  if (e.state && e.state.url && router[e.state.url]) {
-    showContentFromUrl(e.state.url);
-  }
-};
+        window.onpopstate = (e) => {
+            if (e.state && e.state.url && router[e.state.url]) {
+                showContentFromUrl(e.state.url);
+            }
+        };
 
     </script>
     <script>
-    // The Auth0 client, initialized in configureClient()
-let auth0 = null;
+        // The Auth0 client, initialized in configureClient()
+        let auth0 = null;
 
-/**
- * Starts the authentication flow
- */
-const login = async (targetUrl) => {
-  try {
-    console.log("Logging in", targetUrl);
+        /**
+         * Starts the authentication flow
+         */
+        const login = async (targetUrl) => {
+            try {
+                console.log("Logging in", targetUrl);
 
-    const options = {
-      redirect_uri: window.location.origin
-    };
+                const options = {
+                    redirect_uri: window.location.origin
+                };
 
-    const query = window.location.search;
-    if (query.includes("state=")){
-      const darvinState = query.split['='][1];
-      options.appState = { darvinState };
-    }
+                const query = window.location.search;
+                if (query.includes("state=")) {
+                    const darvinState = query.split('=')[1];
+                    options.appState = { darvinState };
+                }
 
-    await auth0.loginWithRedirect(options);
-  } catch (err) {
-    console.log("Log in failed", err);
-  }
-};
+                await auth0.loginWithRedirect(options);
+            } catch (err) {
+                console.log("Log in failed", err);
+            }
+        };
 
-/**
- * Executes the logout flow
- */
-const logout = () => {
-  try {
-    console.log("Logging out");
-    auth0.logout({
-      returnTo: window.location.origin
-    });
-  } catch (err) {
-    console.log("Log out failed", err);
-  }
-};
+        /**
+         * Executes the logout flow
+         */
+        const logout = () => {
+            try {
+                console.log("Logging out");
+                auth0.logout({
+                    returnTo: window.location.origin
+                });
+            } catch (err) {
+                console.log("Log out failed", err);
+            }
+        };
 
-/**
- * Retrieves the auth configuration from the server
- */
-const fetchAuthConfig = () => fetch("/auth_config.json");
+        /**
+         * Retrieves the auth configuration from the server
+         */
+        const fetchAuthConfig = () => ({
+            "domain": "sk-kinvey.eu.auth0.com",
+            "clientId": "JtCFQg6xM1yy5f6nCWqKOTHTx7fdrkKp"
+        });
 
-/**
- * Initializes the Auth0 client
- */
-const configureClient = async () => {
-  const response = await fetchAuthConfig();
-  const config = await response.json();
+        /**
+         * Initializes the Auth0 client
+         */
+        const configureClient = async () => {
+            const response = await fetchAuthConfig();
+            const config = response;
 
-  auth0 = await createAuth0Client({
-    domain: config.domain,
-    client_id: config.clientId
-  });
-};
+            auth0 = await createAuth0Client({
+                domain: config.domain,
+                client_id: config.clientId
+            });
+        };
 
-/**
- * Checks to see if the user is authenticated. If so, `fn` is executed. Otherwise, the user
- * is prompted to log in
- * @param {*} fn The function to execute if the user is logged in
- */
-const requireAuth = async (fn, targetUrl) => {
-  const isAuthenticated = await auth0.isAuthenticated();
+        /**
+         * Checks to see if the user is authenticated. If so, `fn` is executed. Otherwise, the user
+         * is prompted to log in
+         * @param {*} fn The function to execute if the user is logged in
+         */
+        const requireAuth = async (fn, targetUrl) => {
+            const isAuthenticated = await auth0.isAuthenticated();
 
-  if (isAuthenticated) {
-    return fn();
-  }
+            if (isAuthenticated) {
+                return fn();
+            }
 
-  return login(targetUrl);
-};
+            return login(targetUrl);
+        };
 
-// Will run when page finishes loading
-window.onload = async () => {
-  await configureClient();
+        // Will run when page finishes loading
+        window.onload = async () => {
+            debugger;
+            await configureClient();
+            debugger;
 
-  // If unable to parse the history hash, default to the root URL
-  if (!showContentFromUrl(window.location.pathname)) {
-    showContentFromUrl("/");
-    window.history.replaceState({ url: "/" }, {}, "/");
-  }
+            // If unable to parse the history hash, default to the root URL
+            if (!showContentFromUrl(window.location.pathname)) {
+                showContentFromUrl("/");
+                window.history.replaceState({ url: "/" }, {}, "/");
+            }
 
-  const bodyElement = document.getElementsByTagName("body")[0];
+            const bodyElement = document.getElementsByTagName("body")[0];
 
-  // Listen out for clicks on any hyperlink that navigates to a #/ URL
-  bodyElement.addEventListener("click", (e) => {
-    if (isRouteLink(e.target)) {
-      const url = e.target.getAttribute("href");
+            // Listen out for clicks on any hyperlink that navigates to a #/ URL
+            bodyElement.addEventListener("click", (e) => {
+                if (isRouteLink(e.target)) {
+                    const url = e.target.getAttribute("href");
 
-      if (showContentFromUrl(url)) {
-        e.preventDefault();
-        window.history.pushState({ url }, {}, url);
-      }
-    }
-  });
+                    if (showContentFromUrl(url)) {
+                        e.preventDefault();
+                        window.history.pushState({ url }, {}, url);
+                    }
+                }
+            });
 
-  const isAuthenticated = await auth0.isAuthenticated();
+            const isAuthenticated = await auth0.isAuthenticated();
 
-  if (isAuthenticated) {
-    console.log("> User is authenticated");
-    window.history.replaceState({}, document.title, window.location.pathname);
-    updateUI();
-    return;
-  }
+            if (isAuthenticated) {
+                console.log("> User is authenticated");
+                window.history.replaceState({}, document.title, window.location.pathname);
+                updateUI();
+                return;
+            }
 
-  console.log("> User not authenticated");
+            console.log("> User not authenticated");
 
-  const query = window.location.search;
-  const shouldParseResult = query.includes("code=") && query.includes("state=");
+            const query = window.location.search;
+            const shouldParseResult = query.includes("code=") && query.includes("state=");
 
-  if (shouldParseResult) {
-    console.log("> Parsing redirect");
-    try {
-      const result = await auth0.handleRedirectCallback();
+            if (shouldParseResult) {
+                console.log("> Parsing redirect");
+                try {
+                    const result = await auth0.handleRedirectCallback();
 
-      // if (result.appState && result.appState.targetUrl) {
-      //   showContentFromUrl(result.appState.targetUrl);
-      // }
+                    // if (result.appState && result.appState.targetUrl) {
+                    //   showContentFromUrl(result.appState.targetUrl);
+                    // }
 
-      if (result.appState && result.appState.darvinState) {
-        // const {darvinState} = result.appState;
-        // const accessToken = query.split('code=')[1].split('state=')[0];
-        // const url = `https://api.nativechat.com/v1/account-linking?state=${darvinState}`;
-        // const body = {
-        //     accessToken
-        // };
+                    if (result.appState && result.appState.darvinState) {
+                        const { darvinState } = result.appState;
+                        const accessToken = await auth0.getTokenSilently();
+                        const url = `https://api.nativechat.com/v1/account-linking?state=${darvinState}`;
+                        const body = {
+                            accessToken
+                        };
 
-        // const headers = new Headers({
-        //     'Content-Type': 'application/json'
-        // });
+                        $.post(url, body)
+                            .done(function (data) {
+                                const {verificationToken} = data;
+                                parent.postMessage({ type: 'authentication', token: verificationToken }, 'https://web-chat.nativechat.com');
+                            });
+                    }
 
-        // return this.http.post(url, JSON.stringify(body), { headers })
-        //     .toPromise()
-        //     .then((result) => result.json() as LinkAccountResult);
-        // parent.postMessage({ type: 'authentication', token:  }, environment.webchatOrigin);
-      }
+                    console.log("Logged in!");
+                } catch (err) {
+                    console.log("Error parsing redirect:", err);
+                }
 
-      console.log("Logged in!");
-    } catch (err) {
-      console.log("Error parsing redirect:", err);
-    }
+                window.history.replaceState({}, document.title, "/");
+            }
 
-    window.history.replaceState({}, document.title, "/");
-  }
-
-  updateUI();
-};
+            updateUI();
+        };
 
     </script>
-  </body>
+</body>
+
 </html>
