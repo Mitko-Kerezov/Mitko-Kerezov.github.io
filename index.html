@@ -388,6 +388,7 @@ const login = async (targetUrl) => {
       redirect_uri: window.location.origin
     };
 
+    const query = window.location.search;
     if (query.includes("state=")){
       const darvinState = query.split['='][1];
       options.appState = { darvinState };
