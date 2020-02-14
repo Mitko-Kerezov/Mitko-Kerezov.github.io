@@ -358,19 +358,13 @@
         };
 
         /**
-         * Retrieves the auth configuration from the server
-         */
-        const fetchAuthConfig = () => ({
-            "domain": "sk-kinvey.eu.auth0.com",
-            "clientId": "JtCFQg6xM1yy5f6nCWqKOTHTx7fdrkKp"
-        });
-
-        /**
          * Initializes the Auth0 client
          */
         const configureClient = async () => {
-            const response = await fetchAuthConfig();
-            const config = response;
+            const config = {
+                "domain": "sk-kinvey.eu.auth0.com",
+                "clientId": "JtCFQg6xM1yy5f6nCWqKOTHTx7fdrkKp"
+            };
 
             auth0 = await createAuth0Client({
                 domain: config.domain,
@@ -395,9 +389,7 @@
 
         // Will run when page finishes loading
         window.onload = async () => {
-            debugger;
             await configureClient();
-            debugger;
 
             // If unable to parse the history hash, default to the root URL
             if (!showContentFromUrl(window.location.pathname)) {
@@ -441,15 +433,15 @@
                     if (result.appState && result.appState.darvinState) {
                         const { darvinState } = result.appState;
                         const accessToken = await auth0.getTokenSilently();
-                        const url = `http://localhost:3000/v1/account-linking?state=${darvinState}`;
+                        const url = `https://api.nativechat.com/v1/account-linking?state=${darvinState}`;
                         const body = {
                             accessToken
                         };
 
                         $.post(url, body)
                             .done(function (data) {
-                                const {verificationToken} = data;
-                                parent.postMessage({ type: 'authentication', token: verificationToken }, 'http://localhost:5200');
+                                const { verificationToken } = data;
+                                parent.postMessage({ type: 'authentication', token: verificationToken }, 'https://web-chat.nativechat.com');
                             });
                     }
 
