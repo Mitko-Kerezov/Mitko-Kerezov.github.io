@@ -22,8 +22,7 @@
             <div id="content-home" class="page">
                 <div class="text-center hero">
                     <h1 class="mb-4">Test Login Page</h1>
-                    <!-- <h2 id="login-button-container">Loading login button...</h2> -->
-                    <button id="qsLoginBtn" onclick="openNewWindow()" class="btn btn-primary btn-margin auth-invisible hidden">Log in</button>
+                    <h2 id="login-button-container">Loading login button...</h2>
                 </div>
             </div>
         </div>
@@ -35,11 +34,6 @@
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
     <script>
-
-        const openNewWindow = () => {
-            window.open("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=user.read%20sites.readWrite.all%20openid%20profile&client_id=bd8f7b82-4496-4539-9b90-53602cdbb72b&redirect_uri=https%3A%2F%2Fhrchatbotpilotstorage.z16.web.core.windows.net%2F&state=e8a27739-ee93-4657-8546-2b2c6ca2d9f2&nonce=9f7345ef-cb86-41f9-83f1-b36414b72a7e&client_info=1&x-client-SKU=MSAL.JS&x-client-Ver=0.2.2&client-request-id=7ee0310a-2b7d-4a10-bb2e-731b4d052732&prompt=select_account&response_mode=fragment");
-        }
-
         // The Auth0 client, initialized in configureClient()
         let auth0 = null;
 
