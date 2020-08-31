@@ -29,6 +29,37 @@
             },
             chat: chatSettings
         });
+
+        let url = "https://api.nativechat.com/v1/bots/9a8c24e8c98f4eb28a58e600/reports/faq/2020-07-30/2020-08-05";
+        let param = {
+            headers: {
+
+            },
+            method: "GET"
+        };
+
+        // fetch(url, param).then(data => {
+        //     console.log("Success 1", data);
+        // }).catch(error => {
+        //     console.error("Error 1", error);
+        // });
+
+        url = "https://api.nativechat.com/v1/bots/9a8c24e8c98f4eb28a58e600/channels/4099d7bb-a13d-4a3c-96bc-15e89d430741/rest/RestChannel";
+        url = "https://dev-api.nativechat.com/v1/bots/cc73e2cf239340f1a6091843/channels/9bd0cda2-2f4e-4aee-8d8f-04067927d59d/rest/RestChannel";
+        param = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer ea63b97c-8279-47cc-b52a-bc3ce719881a"
+            },
+            body: {"sender":{"id":"854df56d-7f2e-4729-a12b-ca154fd3d1c9"},"message":{"text":"hi"}},
+            method: "POST"
+        };
+
+        fetch(url, param).then(data => {
+            console.log("Success 2", data);
+        }).catch(error => {
+            console.error("Error 2", error);
+        });
     </script>
 </body>
 
