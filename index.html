@@ -84,6 +84,7 @@
 
         // Will run when page finishes loading
         window.onload = async () => {
+            debugger;
             const query = window.location.search;
             const hasPerformedLogin = query.includes("code=") && query.includes("state=");
 
