@@ -98,7 +98,7 @@
                         // Retrieve state passed earlier by NativeChat in order to send it back
                         const { nativeChatState } = result.appState;
                         const accessToken = await auth0.getTokenSilently();
-                        const url = `https://api.nativechat.com/v1/account-linking?state=${nativeChatState}`;
+                        const url = `https://staging-api.nativechat.com/pr207/account-linking?state=${nativeChatState}`;
                         const body = {
                             accessToken
                         };
