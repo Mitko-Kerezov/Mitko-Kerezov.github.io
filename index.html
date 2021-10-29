@@ -1,135 +1,92 @@
 <!DOCTYPE html>
-<html class="h-100">
+<html>
 
 <head>
     <meta charset="UTF-8" />
-    <title>OAuth Login Sample</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/auth0-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
-        integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
-        integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous" />
+    <title>Twilio Flex NChat helper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .conversation-message {
+            display: block;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            padding: 0.5rem;
+            word-wrap: break-word;
+            cursor: pointer;
+            transition: all .2s linear;
+        }
 
-    <link rel="stylesheet" href="https://cdn.auth0.com/js/auth0-samples-theme/1.0/css/auth0-theme.min.css" />
+        .in {
+            text-align: right;
+            margin-left: 10%;
+            background: #e5f7ff;
+        }
+
+        .out {
+            text-align: left;
+            margin-right: 10%;
+            background: #edf1f5;
+        }
+
+        .message-timestamp {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+    </style>
 </head>
 
-<body class="h-100">
-    <div id="app" class="h-100 d-flex flex-column">
-        <div id="main-content" class="container mt-5 flex-grow-1">
-            <div id="content-home" class="page">
-                <div class="text-center hero">
-                    <h1 class="mb-4">Loading...</h1>
-                    <!-- <h2 id="login-button-container">Loading login button...</h2> -->
-                </div>
-            </div>
-        </div>
+<body>
+    <div id="container" style="width: 100%; text-align: center;">
+        <div class="spinner-border text-secondary" role="status"></div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.12.1/auth0-spa-js.production.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
     <script>
-        // The Auth0 client, initialized in configureClient()
-        let auth0 = null;
+        window.onload = async () => {
+            const getRecordFromKinvey = async (kinveyAuth, id) => {
+                const kinveyResponse = await fetch(`https://baas.kinvey.com/appdata/kid_ByVWZDmRD/NChatConversations/000000000000000000000000${id}`, {
+                    headers: {
+                        authorization: `Basic ${kinveyAuth}`
+                    }
+                });
 
-        /**
-         * Starts the authentication flow
-         */
-        const login = async () => {
-            try {
-                const options = {
-                    redirect_uri: window.location.origin
-                };
-
-                const query = window.location.search;
-                if (query.includes("state=")) {
-                    // Retrieve the state query parameter passed by NativeChat
-                    const nativeChatState = query.split('=')[1];
-                    // Save the NativeChat state so that it is not lost upon OAuth redirect
-                    options.appState = { nativeChatState };
-                }
-
-                // Initiate OAuth 2.0 login (i.e. open up the external login page)
-                await auth0.loginWithRedirect(options);
-            } catch (err) {
-                console.log("Log in failed", err);
-            }
-        };
-
-        /**
-         * Initializes the Auth0 client
-         */
-        const configureClient = async (hasPerformedLogin) => {
-            const config = {
-                "domain": "sk-kinvey.eu.auth0.com",
-                "clientId": "JtCFQg6xM1yy5f6nCWqKOTHTx7fdrkKp"
+                const kinveyResult = await kinveyResponse.json();
+                return kinveyResult;
             };
 
-            auth0 = await createAuth0Client({
-                domain: config.domain,
-                client_id: config.clientId
-            });
+            const getNChatMessages = async (kinveyAuth, nchatToken, userId) => {
+                const nchatResponse = await fetch("https://baas.kinvey.com/rpc/kid_ByVWZDmRD/custom/GetNChatMessages", {
+                    method: "POST",
+                    headers: {
+                        authorization: `Basic ${kinveyAuth}`,
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({ nchatToken, userId })
 
-            if (!hasPerformedLogin) {
-                login();
-            }
-            // Create the login button
-            // document.getElementById("login-button-container").innerHTML = '<button id="qsLoginBtn" onclick="login()" class="btn btn-primary btn-margin auth-invisible hidden">Log in</button>';
+                });
+
+                const nchatResult = await nchatResponse.json();
+                return nchatResult;
+            };
+
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const { kinveyBasic, nchatToken, phone } = Object.fromEntries(urlSearchParams.entries());
+            const { userId, latestConversationId } = await getRecordFromKinvey(kinveyBasic, phone);
+            const messages = await getNChatMessages(kinveyBasic, nchatToken, userId);
+
+            const htmlMessages = messages.filter(m => m.Text).sort((a, b) => a.Timestamp - b.Timestamp).map(({ Direction, Text, Timestamp }) => `<div class="card-body messages-list conversation-message">
+            <div class="${Direction}">
+                [${Direction === "out" ? "Bot" : "User"}] ${Text}
+                <div class="message-timestamp">
+                    ${new Date(Timestamp).toLocaleString()}
+                </div>
+            </div>
+        </div>`).join("");
+
+            document.getElementById('container').innerHTML = htmlMessages;
         };
-
-        // Will run when page finishes loading
-        window.onload = async () => {
-            debugger;
-            const query = window.location.search;
-            const hasPerformedLogin = query.includes("code=") && query.includes("state=");
-
-            await configureClient(hasPerformedLogin);
-
-            if (hasPerformedLogin) {
-                // Login was performed successfully
-                try {
-                    const result = await auth0.handleRedirectCallback();
-
-                    if (result.appState && result.appState.nativeChatState) {
-                        // Retrieve state passed earlier by NativeChat in order to send it back
-                        const { nativeChatState } = result.appState;
-                        const accessToken = await auth0.getTokenSilently();
-                        const url = `https://api.nativechat.com/v1/account-linking?state=${nativeChatState}`;
-                        const body = {
-                            accessToken
-                        };
-
-                        // Post a message to NativeChat server that authentication was completed successfully
-                        $.post(url, body)
-                            .done(function (data) {
-                                const { verificationToken, channel } = data;
-                                if (channel === 'darvin') {
-                                    // Post a message to NativeChat chat window that authentication was completed successfully
-                                    parent.postMessage({ type: 'authentication', token: verificationToken }, 'https://web-chat.nativechat.com');
-                                } else if (channel == 'facebook') {
-                                    // Redirect back to Facebook messenger and let it know that authentication was completed successfully
-                                    const url = `https://m.me/progressnativechat?ref=${data.verificationToken}`;
-                                    window.location.replace(url);
-                                }
-                            });
-                    }
-
-                    console.log("Logged in!");
-                } catch (err) {
-                    console.log("Error parsing redirect:", err);
-                }
-
-                window.history.replaceState({}, document.title, "/");
-            }
-
-        };
-
-
-
     </script>
 </body>
 
