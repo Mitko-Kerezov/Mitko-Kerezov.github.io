@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html>
-
-<body>
-    <h1>Test</h1>
-    
-    <script src="https://web-chat.nativechat.com/3.5.0/sdk/nativechat.js"></script>
-    <link href="https://web-chat.nativechat.com/3.5.0/sdk/nativechat.css" rel="stylesheet" type="text/css">
-    <script>
-  var chatSettings = {
-    bot: {
-      id: "0fd98ecc4fde4d0a93373aec"
-    },
-    channel: {
-      id: "5a33a1bc-42d6-42cf-aeb5-5a44438e5e36",
-      token: "e324f2a4-2286-4601-b540-c5bf8c21563e"
-    },
-    googleApiKey: "your-google-maps-API-key",
-    session: {
-      clear: true
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
     }
-  };
-
-  window.NativeChat.load({
-    id: "kcChatWindow",
-    origin: "",
-    display: {
-        mode: "modal"
-    },
-    chat: chatSettings
-  });
-</script>
+    
+    .bg {
+      /* The image used */
+      background-image: url("image.PNG");
+    
+      /* Full height */
+      height: 100%; 
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    </style>
+<body>
+  <div class="bg"></div>
 </body>
 
 </html>
