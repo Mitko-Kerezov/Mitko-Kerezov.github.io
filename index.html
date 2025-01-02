@@ -1,47 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    div {
-    width: 400px;
-    height: 400px;
-}
-#one { /* The image used */
-      background-image: url("image.PNG");
-    
-      /* Full height */
-      height: 100%; 
-    
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain; }
-#two { background: pink; }
-    </style>
+  
 <body>
-  <div id="one">
-    One
-</div>
-
-<div id="two">
-    Two
-</div>
-
-<button>one</button>
-<button>two</button>
-<script>
-  addEventListener("click", event => {
-    const btn = event.target;
-    if (btn.tagName.toLowerCase() !== "button") return;
-    const id = btn.textContent;
-    const div = document.getElementById(id);
-    if (div.requestFullscreen) 
-	    div.requestFullscreen();
-    else if (div.webkitRequestFullscreen) 
-    	div.webkitRequestFullscreen();
-    else if (div.msRequestFullScreen) 
-      div.msRequestFullScreen();
-});
-</script>
+  <video width="320" height="240" controls>
+    <source src="out.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video> 
 </body>
 
 </html>
