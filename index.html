@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
   <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-    }
-    
-    .bg {
-      /* The image used */
+    div {
+    width: 400px;
+    height: 400px;
+}
+#one { /* The image used */
       background-image: url("image.PNG");
     
       /* Full height */
@@ -16,15 +14,34 @@
       /* Center and scale the image nicely */
       background-position: center;
       background-repeat: no-repeat;
-      background-size: contain;
-    }
+      background-size: contain; }
+#two { background: pink; }
     </style>
 <body>
-  <div class="bg"></div>
-  <script>
-    const remainAwake = async () => await navigator.wakeLock.request('screen');
-    remainAwake();
-  </script>
+  <div id="one">
+    One
+</div>
+
+<div id="two">
+    Two
+</div>
+
+<button>one</button>
+<button>two</button>
+<script>
+  addEventListener("click", event => {
+    const btn = event.target;
+    if (btn.tagName.toLowerCase() !== "button") return;
+    const id = btn.textContent;
+    const div = document.getElementById(id);
+    if (div.requestFullscreen) 
+	    div.requestFullscreen();
+    else if (div.webkitRequestFullscreen) 
+    	div.webkitRequestFullscreen();
+    else if (div.msRequestFullScreen) 
+      div.msRequestFullScreen();
+});
+</script>
 </body>
 
 </html>
