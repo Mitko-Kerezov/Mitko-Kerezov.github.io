@@ -21,6 +21,10 @@
     </style>
 <body>
   <div class="bg"></div>
+  <script>
+    const remainAwake = async () => await navigator.wakeLock.request('screen');
+    remainAwake();
+  </script>
 </body>
 
 </html>
